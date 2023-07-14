@@ -13,13 +13,13 @@ describe('Add A Restaurant To Favorite', () => {
   it('should show add favorite button when restaurant has not been favorite before', async () => {
     await TestFactories.createFavoriteButtonPresenterWithRestaurant({ id: 1 });
 
-    expect(document.querySelector('[aria-label="add to favorite"]')).toBeTruthy();
+    expect(document.querySelector('[aria-label="Tambah ke daftar favorit"]')).toBeTruthy();
   });
 
   it('should show remove from favorite button when restaurant was favoured before', async () => {
     await TestFactories.createFavoriteButtonPresenterWithRestaurant({ id: 1 });
 
-    expect(document.querySelector('[aria-label="remove from favorite"]')).toBeFalsy();
+    expect(document.querySelector('[aria-label="Hapus dari daftar favorit"]')).toBeFalsy();
   });
 
   it('should be able to add restaurant to favorite', async () => {
