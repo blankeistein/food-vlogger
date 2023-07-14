@@ -18,13 +18,13 @@ describe('Remove A Restaurant From Favorite', () => {
   it('should display remove favorite button when restaurant is in favorite list', async () => {
     await TestFactories.createFavoriteButtonPresenterWithRestaurant({ id: 1 });
 
-    expect(document.querySelector('[aria-label="remove from favorite"]')).toBeTruthy();
+    expect(document.querySelector('[aria-label="Hapus dari daftar favorit"]')).toBeTruthy();
   });
 
   it('should not display add to favorite button when restaurant is in favorite list', async () => {
     await TestFactories.createFavoriteButtonPresenterWithRestaurant({ id: 1 });
 
-    expect(document.querySelector('[aria-label="add to favorite"]')).toBeFalsy();
+    expect(document.querySelector('[aria-label="Tambah ke daftar favorit"]')).toBeFalsy();
   });
 
   it('should be able to remove restaurant from the list', async () => {
