@@ -8,7 +8,9 @@ const PageNotFound = {
     `;
   },
 
-  async afterRender() { }
+  async afterRender() {
+    return;
+  },
 };
 
 export default PageNotFound;
