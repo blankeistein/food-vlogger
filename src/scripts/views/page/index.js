@@ -33,9 +33,8 @@ const Index = {
     try {
       const restaurants = await RestaurantsSource.listRestaurant();
       restaurantsContainer.innerHTML = '';
-      restaurants.forEach((resto) => {
-        restaurantsContainer.innerHTML += RestaurantItem(resto);
-      });
+      const renderedRestaurant = restaurants.map((resto) => RestaurantItem(resto));
+      restaurantsContainer.innerHTML = renderedRestaurant.join('');
     } catch (err) {
       restaurantsContainer.innerHTML = err.message;
     }
