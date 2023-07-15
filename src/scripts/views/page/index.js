@@ -7,6 +7,10 @@ const Index = {
   async render() {
     return `
       <section class="hero__container">
+        <picture class="hero__background">
+          <source media="(max-width: 600px)" srcset="/assets/images/heros/hero-image_2-small.webp">
+          <img src="/assets/images/heros/hero-image_2-large.webp" alt="hero background">
+        </picture>
         <div class="hero__wrapper">
           <h1 class="hero__tagline">Exploring Flavors, One Bite at a Time</h1>
           <a href="#restaurantContainer" id="scrollDown" class="hero__action">Scroll Down</a>

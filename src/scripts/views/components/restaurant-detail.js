@@ -85,10 +85,13 @@ const RestaurantDetail = (restaurant) => {
       <div class="add__review">
         <h5>Berikan ulasanmu</h5>
 
+        <div class="alert__container">
+        </div>
+
         <form id="addReviewForm">
           <div class="input__wrapper">
             <label for="userName">Nama</label>
-            <input  type="text" id="userName" name="name" required/>
+            <input type="text" id="userName" name="name" required/>
           </div>
           <div class="input__wrapper">
             <label for="userReview">Ulasan yang kamu berikan</label>

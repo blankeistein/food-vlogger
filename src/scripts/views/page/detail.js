@@ -11,7 +11,7 @@ const DetailRestaurant = {
   async render() {
     return `
     <section id="mainContent" tabindex="0" class="restaurant__detail container">
-        ${Loading()}
+      ${Loading()}
     </section>
 
     <div id="favoriteBtnContainer" class="favorite__btn_container">
@@ -33,14 +33,13 @@ const DetailRestaurant = {
       const restaurant = await RestaurantsSource.detailRestaurant(url.id);
       restaurantDetailContainer.innerHTML = RestaurantDetail(restaurant);
 
-      const favoriteBtnContainer = document.getElementById('favoriteBtnContainer');
-
       const addReviewForm = document.getElementById('addReviewForm');
-
       AddReviewInitiator.init({
         id: restaurant.id,
         form: addReviewForm,
       });
+
+      const favoriteBtnContainer = document.getElementById('favoriteBtnContainer');
       FavoriteButtonPresenter.init({
         favoriteButtonContainer: favoriteBtnContainer,
         favoriteRestaurants: FavoriteRestoIdb,

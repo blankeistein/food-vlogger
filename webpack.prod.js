@@ -1,8 +1,8 @@
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const { merge } = require('webpack-merge');
 const path = require('path');
-const AdaptorResponsiveLoaderSharp = require('responsive-loader/sharp');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
@@ -22,23 +22,20 @@ module.exports = merge(common, {
           },
         ],
       },
-      {
-        test: /\.(jpe?g|png)$/i,
-        use: [
-          {
-            loader: 'responsive-loader',
-            options: {
-              adapter: AdaptorResponsiveLoaderSharp,
-              format: 'webp',
-              name: 'assets/images/[name]-[hash].[ext]',
-            },
-          },
-        ],
-        type: 'javascript/auto',
-      },
     ],
   },
   plugins: [
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'src/public/'),
+          to: path.resolve(__dirname, 'dist/'),
+          globOptions: {
+            ignore: ['**/images/**'],
+          },
+        },
+      ],
+    }),
     new WorkboxWebpackPlugin.InjectManifest({
       swSrc: path.resolve(__dirname, 'src/scripts/sw.js'),
       swDest: './sw.bundle.js',
