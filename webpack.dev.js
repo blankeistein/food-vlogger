@@ -1,6 +1,7 @@
 const { merge } = require('webpack-merge');
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
@@ -20,5 +21,20 @@ module.exports = merge(common, {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'src/public/images/'),
+          to: path.resolve(__dirname, 'dist/assets/images/'),
+        },
+        {
+          from: path.resolve(__dirname, 'src/public/'),
+          to: path.resolve(__dirname, 'dist/'),
+          globOptions: {
+            ignore: ['**/images/**'],
+          },
+        },
+      ],
+    }),
   ],
 });

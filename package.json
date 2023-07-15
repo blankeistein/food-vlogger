@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-dev": "webpack-dev-server --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js",
+    "start-dev": "webpack-dev-server --config webpack.dev.js && node sharp.js",
+    "build": "webpack --config webpack.prod.js && node sharp.js",
+    "build-image": "node sharp.js",
     "lint": "eslint ./src",
     "serve": "http-server dist",
     "test": "karma start",
@@ -62,6 +63,9 @@
     "idb": "^7.1.1",
     "lazysizes": "^5.3.2",
     "regenerator-runtime": "^0.13.9",
+    "workbox-cacheable-response": "^7.0.0",
+    "workbox-routing": "^7.0.0",
+    "workbox-strategies": "^7.0.0",
     "workbox-window": "^7.0.0"
   }
 }

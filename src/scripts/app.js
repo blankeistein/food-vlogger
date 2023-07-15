@@ -1,6 +1,7 @@
 import routes from './routes/routes';
 import UrlParser from './routes/url-parser';
 import DrawerInitiator from './utils/drawer-initiator';
+import Loading from './views/components/loading';
 import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
@@ -23,12 +24,12 @@ class App {
 
   async renderPage() {
     const url = UrlParser.parseActiveUrlWithCombiner();
-    const page = (routes[url]) ? routes[url] : routes['/404'];
+    this._content.innerHTML = Loading();
+    const page = await (routes[url]) ? await routes[url] : await routes['/404'];
 
+    this._content.innerHTML = await page.default.render();
     window.scroll({ top: 0, left: 0, behavior: 'instant' });
-
-    this._content.innerHTML = await page.render();
-    await page.afterRender();
+    await page.default.afterRender();
   }
 
   _closeDrawer() {
